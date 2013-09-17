@@ -15,5 +15,5 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 $plugin->version = '2013091300';
-$plugin->requires  = 2013051402;        // Requires this Moodle version
+$plugin->requires  = 2013051402;        // Requires this Moodle version.
 $plugin->component = 'block_eledia_course_archiving';

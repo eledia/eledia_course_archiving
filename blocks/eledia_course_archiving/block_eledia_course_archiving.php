@@ -32,7 +32,7 @@ class block_eledia_course_archiving extends block_base {
     }
 
     public function applicable_formats() {
-        return array('site'=>true);
+        return array('site' => true);
     }
 
     public function get_content() {
@@ -41,7 +41,7 @@ class block_eledia_course_archiving extends block_base {
             return $this->content;
         }
 
-        $this->content =  new object();
+        $this->content = new object();
         $this->content->text = '';
         $this->content->footer = '';
         if (has_capability('moodle/site:config', get_context_instance(CONTEXT_SYSTEM))) {
