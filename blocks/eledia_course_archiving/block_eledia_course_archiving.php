@@ -44,6 +44,15 @@ class block_eledia_course_archiving extends block_base {
         $this->content = new object();
         $this->content->text = '';
         $this->content->footer = '';
+
+        $config = get_config('block_eledia_course_archiving');
+        if(empty($config->sourcecat)) {
+            return $this->content;
+        }
+        if(empty($config->targetcat)) {
+            return $this->content;
+        }
+
         if (has_capability('moodle/site:config', get_context_instance(CONTEXT_SYSTEM))) {
 
             $this->content->text .= '<a href="'.$CFG->wwwroot.'/blocks/eledia_course_archiving/archiving_courses.php" >';

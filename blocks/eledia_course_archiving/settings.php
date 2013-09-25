@@ -34,7 +34,7 @@ if ($ADMIN->fulltree) {
     $configs[] = new admin_setting_configselect('targetcat', get_string('targetcat', 'block_eledia_course_archiving'),
             '', null, $options);
     $configs[] = new admin_setting_configtext('days', get_string('days', 'block_eledia_course_archiving'),
-            '', '', PARAM_RAW, '10', '1');
+            '', '365', PARAM_RAW, '10', '1');
 
     foreach ($configs as $config) {
         $config->plugin = 'block_eledia_course_archiving';
