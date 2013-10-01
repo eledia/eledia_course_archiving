@@ -17,6 +17,14 @@
 $string['archive'] = 'Archivierung starten';
 
 $string['configure_description'] = '';
+$string['confirm_archiving'] = 'Die folgenden Kurse werden archiviert:<br />
+<br />
+{$a->archived}<br />
+<br />
+Die folgenden Kurse werden gelöscht:<br />
+<br />
+{$a->deleted}';
+$string['confirm_header'] = 'Archiving Bestätigen';
 
 $string['days'] = 'Anzahl der Tage die Rückwirkend betrachtet werden.';
 

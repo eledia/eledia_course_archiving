@@ -17,6 +17,14 @@
 $string['archive'] = 'Archivierung starten';
 
 $string['configure_description'] = '';
+$string['confirm_archiving'] = 'The follwoing courses will be archived:<br />
+<br />
+{$a->archived}<br />
+<br />
+The follwoing courses will be deleted:<br />
+<br />
+{$a->deleted}';
+$string['confirm_header'] = 'Confirm Archiving';
 
 $string['days'] = 'days';
 
