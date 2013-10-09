@@ -14,9 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * En language file for the plugin.
+ *
+ * @package    block
+ * @subpackage eledia_course_archiving
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 $string['archive'] = 'Archivierung starten';
 
-$string['configure_description'] = '';
+$string['configure_description'] = 'Hier kann der Archivierungsprozess konfiguriert werden.
+    Alle Kurse, die in den ausgewählten Kategorien liegen, werden gegen Ihren Kursbeginn geprüft. Liegt der Kursbeginn zwischen
+    dem aktuellen Datum und der ausgwählten Anzahl an Tagen in der Vergangenheit, wird der Kurs archiviert.
+    Archivierung bedeutet, dass der Kurs unsichtbar geschaltet wird, in die ausgewählte Archivierungskategorie verschoben
+    und alle Nutzer mit der Rolle student aus dem Kurs ausgetragen werden. Im zweiten Schritt werden alle Kurs in der Archivierungskategorie
+    gegen ihren Kursbeginn geprüft. Wenn der Kursbeginn weiter zurückliegt als die ausgewählte Anzahl an Tagen in der Vergangenheit, wird der Kurs gelöscht.<br /><br />
+    Angestoßen wird der Prozess mit einem Formular das im Block verlinkt ist. Der Block kann nur auf der Startseite eingbunden werden.';
 $string['confirm_archiving'] = 'Die folgenden Kurse werden archiviert:<br />
 <br />
 {$a->archived}<br />
@@ -24,9 +40,9 @@ $string['confirm_archiving'] = 'Die folgenden Kurse werden archiviert:<br />
 Die folgenden Kurse werden gelöscht:<br />
 <br />
 {$a->deleted}';
-$string['confirm_header'] = 'Archiving Bestätigen';
+$string['confirm_header'] = 'Archivierung Bestätigen';
 
-$string['days'] = 'Anzahl der Tage die Rückwirkend betrachtet werden.';
+$string['days'] = 'Anzahl der Tage die rückwirkend betrachtet werden.';
 
 $string['eledia_course_archiving:addinstance'] = 'Kurs-Archivierungs-Block hinzufügen';
 
@@ -38,12 +54,12 @@ Die folgenden Kurse wurden gelöscht:<br />
 <br />
 {$a->deleted}';
 
-$string['remove_success'] = ' - erfolgreich gelöscht';
+$string['remove_success'] = ' - Erfolgreich gelöscht';
 $string['remove_error'] = ' - Fehler beim löschen.';
 
 $string['sourcecat'] = 'Zu archivierde Kategorien';
 
-$string['targetcat'] = 'Archiv Kategorie';
-$string['title'] = 'eLeDia Kurs-Archivierungs-Block';
+$string['targetcat'] = 'Archivkategorie';
+$string['title'] = 'Kurs-Archivierung';
 
-$string['pluginname'] = 'eLeDia Kurs-Archivierungs-Block';
+$string['pluginname'] = 'Kurs-Archivierung';

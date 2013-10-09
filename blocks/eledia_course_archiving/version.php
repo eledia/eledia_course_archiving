@@ -14,6 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$plugin->version = '2013091300';
-$plugin->requires  = 2012120306;        // Requires this Moodle version.
+/**
+ * Version inforamtion.
+ *
+ * @package    block
+ * @subpackage eledia_course_archiving
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+$plugin->version = 2013091300;
+$plugin->release = '0.1 (2013091300)';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->requires  = 2013050100;
 $plugin->component = 'block_eledia_course_archiving';

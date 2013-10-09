@@ -14,9 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$string['archive'] = 'Archivierung starten';
+/**
+ * De language file for the plugin.
+ *
+ * @package    block
+ * @subpackage eledia_course_archiving
+ * @author     Benjamin Wolf <support@eledia.de>
+ * @copyright  2013 eLeDia GmbH
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
-$string['configure_description'] = '';
+$string['archive'] = 'Start Archiving';
+
+$string['configure_description'] = 'Here you can configure the archiving process. All courses which are located directly in the source categories
+    will be checked against their course start date. If the date is within the timespan of now and the choosen days in the past, the course will be archived.
+    This means the course will be set invisible, moved to the confiruged archive category and all student users will be unenroled.
+    In a second step all courses in archive categorie are checked against their course start date.
+    If it is more than the chosen number of days in the past the course will be deleted.<br /><br />
+    The process can be initiated through a formular which is linked in the block. The block can be added to the main page only.';
 $string['confirm_archiving'] = 'The follwoing courses will be archived:<br />
 <br />
 {$a->archived}<br />
@@ -26,7 +41,7 @@ The follwoing courses will be deleted:<br />
 {$a->deleted}';
 $string['confirm_header'] = 'Confirm Archiving';
 
-$string['days'] = 'days';
+$string['days'] = 'Number of days to archive';
 
 $string['eledia_course_archiving:addinstance'] = 'add course archiving block';
 
@@ -41,9 +56,9 @@ The follwoing courses where deleted:<br />
 $string['remove_success'] = ' - Successful removed';
 $string['remove_error'] = ' - Errors while removing';
 
-$string['sourcecat'] = 'sourcecat';
+$string['sourcecat'] = 'Categories to archivate';
 
-$string['targetcat'] = 'targetcat';
-$string['title'] = 'eLeDia course archiving block';
+$string['targetcat'] = 'Archive categorie';
+$string['title'] = 'Course Archiving';
 
-$string['pluginname'] = 'eLeDia course archiving block';
+$string['pluginname'] = 'Course Archiving';

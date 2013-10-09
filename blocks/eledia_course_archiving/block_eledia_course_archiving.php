@@ -46,10 +46,10 @@ class block_eledia_course_archiving extends block_base {
         $this->content->footer = '';
 
         $config = get_config('block_eledia_course_archiving');
-        if(empty($config->sourcecat)) {
+        if (empty($config->sourcecat)) {
             return $this->content;
         }
-        if(empty($config->targetcat)) {
+        if (empty($config->targetcat)) {
             return $this->content;
         }
 
