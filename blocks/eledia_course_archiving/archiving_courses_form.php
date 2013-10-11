@@ -40,10 +40,12 @@ class archiving_courses_form extends moodleform {
         $categories = explode(',', $config->sourcecat);
 
         $since = time() - ($config->days * 24 * 60 * 60);
+        $now = time();
         list($qrypart, $params) = $DB->get_in_or_equal($categories);
         $params[] = $since;
+        $params[] = $now;
 
-        $sql = 'SELECT * FROM {course} WHERE category '.$qrypart.' AND startdate > ?';
+        $sql = 'SELECT * FROM {course} WHERE category '.$qrypart.' AND startdate > ? AND startdate < ?';
         $courses = $DB->get_records_sql($sql, $params);
 
         $archive_list = '';
