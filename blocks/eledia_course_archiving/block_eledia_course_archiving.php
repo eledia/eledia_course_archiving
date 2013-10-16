@@ -53,7 +53,7 @@ class block_eledia_course_archiving extends block_base {
             return $this->content;
         }
 
-        if (has_capability('moodle/site:config', get_context_instance(CONTEXT_SYSTEM))) {
+        if (has_capability('block/eledia_course_archiving:use', CONTEXT_BLOCK::instance($this->instance->id))) {
 
             $this->content->text .= '<a href="'.$CFG->wwwroot.'/blocks/eledia_course_archiving/archiving_courses.php" >';
             $this->content->text .= get_string('archive', 'block_eledia_course_archiving');
