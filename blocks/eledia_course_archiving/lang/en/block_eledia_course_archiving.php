@@ -31,7 +31,7 @@ $string['configure_description'] = 'Here you can configure the archiving process
     This means the course will be set invisible, moved to the confiruged archive category and all student users will be unenroled.
     In a second step all courses in archive categorie are checked against their course start date.
     If it is more than the chosen number of days in the past the course will be deleted.<br /><br />
-    The process can be initiated through a formular which is linked in the block. The block can be added to the main page only.';
+    The process can be initiated through a form which is linked in the block. The block can be added to the main page only.';
 $string['confirm_archiving'] = 'The follwoing courses will be archived:<br />
 <br />
 {$a->archived}<br />
