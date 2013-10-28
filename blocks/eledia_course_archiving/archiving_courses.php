@@ -29,11 +29,11 @@ require_once('../../course/lib.php');
 global $DB, $CFG;
 
 $PAGE->set_url('/blocks/eledia_course_archiving/archiving_courses.php');
-$PAGE->set_context(get_context_instance(CONTEXT_SYSTEM));
+$context = CONTEXT_SYSTEM::instance();
+$PAGE->set_context($context);
 $PAGE->set_pagelayout('course');
 
 require_login(0, false);
-$context = get_context_instance(CONTEXT_SYSTEM);
 require_capability('moodle/site:config', $context);
 
 $config = get_config('block_eledia_course_archiving');
