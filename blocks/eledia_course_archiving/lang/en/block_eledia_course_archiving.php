@@ -44,6 +44,7 @@ $string['confirm_header'] = 'Confirm Archiving';
 $string['days'] = 'Number of days to archive';
 
 $string['eledia_course_archiving:addinstance'] = 'add course archiving block';
+$string['eledia_course_archiving:use'] = 'use course archiving block';
 
 $string['notice'] = 'The follwoing courses were archived:<br />
 <br />
