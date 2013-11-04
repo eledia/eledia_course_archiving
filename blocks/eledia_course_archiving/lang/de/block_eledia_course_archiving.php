@@ -45,6 +45,7 @@ $string['confirm_header'] = 'Archivierung Bestätigen';
 $string['days'] = 'Anzahl der Tage die rückwirkend betrachtet werden.';
 
 $string['eledia_course_archiving:addinstance'] = 'Kurs-Archivierungs-Block hinzufügen';
+$string['eledia_course_archiving:use'] = 'Kurs-Archivierungs-Block verwenden';
 
 $string['notice'] = 'Die folgenden Kurse wurden archiviert:<br />
 <br />
