@@ -27,5 +27,5 @@
 $plugin->version = 2013110400;
 $plugin->release = '0.1 (2013110400)';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->requires  = 2013050100;
+$plugin->requires  = 2013101800;
 $plugin->component = 'block_eledia_course_archiving';
