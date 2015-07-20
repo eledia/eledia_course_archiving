@@ -41,6 +41,7 @@ Die folgenden Kurse werden gelöscht:<br />
 <br />
 {$a->deleted}';
 $string['confirm_header'] = 'Archivierung Bestätigen';
+$string['course_archiving_task'] = 'Kurse Archivieren';
 
 $string['days'] = 'Anzahl der Tage die rückwirkend betrachtet werden.';
 
@@ -57,6 +58,7 @@ Die folgenden Kurse wurden gelöscht:<br />
 
 $string['remove_success'] = ' - Erfolgreich gelöscht';
 $string['remove_error'] = ' - Fehler beim löschen.';
+$string['run_cron'] = 'cron zur Archivierung aktivieren';
 
 $string['sourcecat'] = 'Zu archivierde Kategorien';
 

@@ -40,6 +40,7 @@ The follwoing courses will be deleted:<br />
 <br />
 {$a->deleted}';
 $string['confirm_header'] = 'Confirm Archiving';
+$string['course_archiving_task'] = 'Archiving courses';
 
 $string['days'] = 'Number of days to archive';
 
@@ -56,6 +57,7 @@ The follwoing courses where deleted:<br />
 
 $string['remove_success'] = ' - Successful removed';
 $string['remove_error'] = ' - Errors while removing';
+$string['run_cron'] = 'activate cron task for archivation';
 
 $string['sourcecat'] = 'Categories to archivate';
 
