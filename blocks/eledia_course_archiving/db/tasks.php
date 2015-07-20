@@ -15,17 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version inforamtion.
+ * eledia_course_archiving cron task.
  *
- * @package    block
- * @subpackage eledia_course_archiving
- * @author     Benjamin Wolf <support@eledia.de>
- * @copyright  2013 eLeDia GmbH
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package block_eledia_course_archiving
+ * @author Benjamin Wolf <support@eledia.de>
+ * @copyright 2015 eLeDia GmbH
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version = 2015071700;
-$plugin->release = '1.0 (2015071700)';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->requires  = 2013101800;
-$plugin->component = 'block_eledia_course_archiving';
+defined('MOODLE_INTERNAL') || die();
+
+$tasks = array(
+    array(
+        'classname' => '\block_eledia_course_archiving\task\eledia_course_archiving_task',
+        'blocking' => 0,
+        'minute' => '30',
+        'hour' => '1',
+        'day' => '*',
+        'dayofweek' => '*',
+        'month' => '*'
+    ),
+);

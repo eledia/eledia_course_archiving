@@ -31,6 +31,10 @@ if ($ADMIN->fulltree) {
     $configs[] = new admin_setting_heading('block_eledia_course_archiving_header', '',
             get_string('configure_description', 'block_eledia_course_archiving'));
 
+    $configs[] = new admin_setting_configcheckbox('run_cron',
+                                                get_string('run_cron', 'block_eledia_course_archiving'),
+                                                '',
+                                                0);
 
     $categories = $DB->get_records('course_categories');
     $options = array();
