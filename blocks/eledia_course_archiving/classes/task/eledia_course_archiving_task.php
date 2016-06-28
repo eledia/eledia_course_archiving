@@ -42,7 +42,7 @@ class eledia_course_archiving_task extends \core\task\scheduled_task {
      * Do the job.
      */
     public function execute() {
-        global $CFG, $DB;
+        global $CFG;
         $config = get_config('block_eledia_course_archiving');
         if ($config->run_cron) {
             include_once($CFG->dirroot.'/blocks/eledia_course_archiving/locallib.php');

@@ -28,24 +28,15 @@ class block_eledia_course_archiving {
     public function process_archivment($config) {
         global $DB;
 
-        $categories = explode(',', $config->sourcecat);
-
-        $since = time() - ($config->days * 24 * 60 * 60);
-        $now = time();
-        list($qrypart, $params) = $DB->get_in_or_equal($categories);
-        $params[] = $since;
-        $params[] = $now;
-
-        $sql = 'SELECT * FROM {course} WHERE category '.$qrypart.' AND startdate > ? AND startdate < ?';
-        $courses = $DB->get_records_sql($sql, $params);
+        // Get courses.
+        $result = $this->check_courses($config);
 
         $archived_list = '';
-        foreach ($courses as $course) {
+        foreach ($result->archive as $course) {
             // Move and hide.
             $course->category = $config->targetcat;
             $course->visible = 0;
             update_course($course);
-
             $archived_list .= $course->fullname."<br />";
 
             // Unenrol students.
@@ -66,15 +57,10 @@ class block_eledia_course_archiving {
             }
         }
 
-        // Get older courses.
-        $old_params = array($config->targetcat, $since);
-        $sql = 'SELECT * FROM {course} WHERE category = ? AND startdate < ?';
-        $old_courses = $DB->get_records_sql($sql, $old_params);
-
         // Delete older courses.
         $deleted_list = '';
         ob_start();
-        foreach ($old_courses as $course) {
+        foreach ($result->delete as $course) {
             $sucess = delete_course($course);
             if ($sucess) {
                 $deleted_list .= $course->fullname.get_string('remove_success', 'block_eledia_course_archiving')."<br />";
@@ -88,8 +74,70 @@ class block_eledia_course_archiving {
         $a = new stdClass();
         $a->archived = $archived_list;
         $a->deleted = $deleted_list;
-
         return $a;
     }
 
+    public function check_courses($config) {
+        global $DB;
+
+        // Get Timestamps.
+        $since = time() - ($config->days * 24 * 60 * 60);
+        $now = time();
+
+        // Get courses to archive.
+        $categories = explode(',', $config->sourcecat);
+        if ($config->targettimestamp == 'startdate') {
+            $courses = $this->get_courses_by_startdate($categories, $since, $now);
+        } else if ($config->targettimestamp == 'last_activity') {
+            $courses = $this->get_courses_by_last_access($categories, $since, $now);
+        }
+
+        // Get courses to delete.
+        if ($config->targettimestamp == 'startdate') {
+            $old_params = array($config->targetcat, $since);
+            $sql = 'SELECT * FROM {course} WHERE category = ? AND startdate < ?';
+            $old_courses = $DB->get_records_sql($sql, $old_params);
+        } else if ($config->targettimestamp == 'last_activity') {
+            $since2 = $since - ($config->days * 24 * 60 * 60);
+            $old_params = array($config->targetcat, $since2);
+            $sql = 'SELECT * FROM mdl_course c,(SELECT courseid, max(timecreated) AS timecreated
+                FROM `mdl_logstore_standard_log`
+                WHERE action = \'viewed\'
+                GROUP BY courseid) AS log
+                WHERE category = ?
+                AND log.timecreated < ?
+                AND log.courseid = c.id';
+            $old_courses = $DB->get_records_sql($sql, $old_params);
+        }
+
+        $result = new stdClass();
+        $result->archive = $courses;
+        $result->delete = $old_courses;
+        return $result;
+    }
+
+    private function get_courses_by_last_access($categories, $since) {
+        global $DB;
+
+        list($qrypart, $params) = $DB->get_in_or_equal($categories);
+        $params[] = $since;
+        $sql = 'SELECT * FROM mdl_course c,(SELECT courseid, max(timecreated) AS timecreated
+                FROM `mdl_logstore_standard_log`
+                WHERE action = \'viewed\'
+                GROUP BY courseid) AS log
+                WHERE category '.$qrypart.'
+                AND log.timecreated < ?
+                AND log.courseid = c.id';
+        return $DB->get_records_sql($sql, $params);
+    }
+
+    private function get_courses_by_startdate($categories, $since, $now) {
+        global $DB;
+
+        list($qrypart, $params) = $DB->get_in_or_equal($categories);
+        $params[] = $since;
+        $params[] = $now;
+        $sql = 'SELECT * FROM {course} WHERE category '.$qrypart.' AND startdate > ? AND startdate < ?';
+        return $DB->get_records_sql($sql, $params);
+    }
 }

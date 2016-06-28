@@ -26,12 +26,22 @@
 
 $string['archive'] = 'Start Archiving';
 
-$string['configure_description'] = 'Here you can configure the archiving process. All courses which are located directly in the source categories
-    will be checked against their course start date. If the date is within the timespan of now and the choosen days in the past, the course will be archived.
-    This means the course will be set invisible, moved to the confiruged archive category and all student users will be unenroled.
-    In a second step all courses in archive categorie are checked against their course start date.
-    If it is more than the chosen number of days in the past the course will be deleted.<br /><br />
-    The process can be initiated through a form which is linked in the block. The block can be added to the main page only.';
+$string['configure_description'] = 'Here you can configure the archiving process.
+Archiving means the course will be set invisible, moved to the confiruged archive category and all student users will be unenroled.
+All courses which are located directly in the source categories will be checked against the choosen timestamp.
+Depending on the timestamp setting there will be the follwoing flow.<br />
+
+Course start date:<br />
+If the date is within the timespan of now and the choosen days in the past, the course will be archived.
+In a second step all courses in archive categorie are checked.
+If it is more than the chosen number of days in the past the course will be deleted.<br />
+<br />
+Last course activity:<br />
+If the date is more than the choosne days in the past , the courses will be archived.
+In a second step all courses in archive categorie are checked.
+If the courses there are inactive for more than the double number of days in the setting the coruses will be finally deleted.<br />
+<br />
+The process can be initiated through a form which is linked in the block. The block can be added to the main page only.';
 $string['confirm_archiving'] = 'The follwoing courses will be archived:<br />
 <br />
 {$a->archived}<br />
@@ -46,6 +56,8 @@ $string['days'] = 'Number of days to archive';
 
 $string['eledia_course_archiving:addinstance'] = 'add course archiving block';
 $string['eledia_course_archiving:use'] = 'use course archiving block';
+
+$string['last_activity'] = 'last course activity';
 
 $string['notice'] = 'The follwoing courses were archived:<br />
 <br />
@@ -62,6 +74,7 @@ $string['run_cron'] = 'activate cron task for archivation';
 $string['sourcecat'] = 'Categories to archivate';
 
 $string['targetcat'] = 'Archive categorie';
+$string['targettimestamp'] = 'Timestamp to check';
 $string['title'] = 'Course Archiving';
 
 $string['pluginname'] = 'Course Archiving';

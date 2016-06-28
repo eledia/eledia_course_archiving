@@ -31,6 +31,12 @@ if ($ADMIN->fulltree) {
     $configs[] = new admin_setting_heading('block_eledia_course_archiving_header', '',
             get_string('configure_description', 'block_eledia_course_archiving'));
 
+    $options_timestamp = array('startdate' => get_string('startdate'),
+        'last_activity' => get_string('last_activity', 'block_eledia_course_archiving'));
+    $configs[] = new admin_setting_configselect('targettimestamp',
+            get_string('targettimestamp', 'block_eledia_course_archiving'),
+            '', null, $options_timestamp);
+
     $configs[] = new admin_setting_configcheckbox('run_cron',
                                                 get_string('run_cron', 'block_eledia_course_archiving'),
                                                 '',

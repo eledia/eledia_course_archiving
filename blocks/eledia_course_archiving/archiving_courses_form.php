@@ -29,43 +29,35 @@ if (!defined('MOODLE_INTERNAL')) {
 }
 
 require_once($CFG->libdir.'/formslib.php');
+require_once($CFG->dirroot.'/blocks/eledia_course_archiving/locallib.php');
 
 class archiving_courses_form extends moodleform {
 
     public function definition() {
-        global $DB, $CFG;
         $mform =& $this->_form;
 
         $config = get_config('block_eledia_course_archiving');
-        $categories = explode(',', $config->sourcecat);
-
-        $since = time() - ($config->days * 24 * 60 * 60);
-        $now = time();
-        list($qrypart, $params) = $DB->get_in_or_equal($categories);
-        $params[] = $since;
-        $params[] = $now;
-
-        $sql = 'SELECT * FROM {course} WHERE category '.$qrypart.' AND startdate > ? AND startdate < ?';
-        $courses = $DB->get_records_sql($sql, $params);
-
-        $archive_list = '';
-        foreach ($courses as $course) {
-            $archive_list .= $course->fullname."<br />";
-        }
-
-        // Get older courses.
-        $old_params = array($config->targetcat, $since);
-        $sql = 'SELECT * FROM {course} WHERE category = ? AND startdate < ?';
-        $old_courses = $DB->get_records_sql($sql, $old_params);
-
-        $delete_list = '';
-        foreach ($old_courses as $course) {
-            $delete_list .= $course->fullname."<br />";
-        }
+        $archivement = new \block_eledia_course_archiving();
+        $result = $archivement->check_courses($config);
 
         $a = new stdClass();
-        $a->archived = $archive_list;
-        $a->deleted = $delete_list;
+        $a->archived = '';
+        $a->deleted = '';
+
+        if (!empty($result->archive)) {
+            $archive_list = '';
+            foreach ($result->archive as $course) {
+                $archive_list .= $course->fullname."<br />";
+            }
+            $a->archived = $archive_list;
+        }
+        if (!empty($result->delete)) {
+            $delete_list = '';
+            foreach ($result->delete as $course) {
+                $delete_list .= $course->fullname."<br />";
+                $a->deleted = $delete_list;
+            }
+        }
 
         $mform->addElement('header', '', get_string('confirm_header', 'block_eledia_course_archiving'));
         $mform->addElement('static', '' , '', get_string('confirm_archiving', 'block_eledia_course_archiving', $a));
