@@ -26,24 +26,25 @@
 
 $string['archive'] = 'Archivierung starten';
 
-$string['configure_description'] = 'Hier kann der Archivierungsprozess konfiguriert werden.
-Archivierung bedeutet, dass der Kurs unsichtbar geschaltet wird, in die ausgewählte Archivierungskategorie verschoben
-und alle Nutzer mit der Rolle student aus dem Kurs ausgetragen werden.
+$string['configure_description'] = 'Die Archivierung und Löschung von Kursen konfigurieren Sie hier.
+Archivierung bedeutet, dass der Kurs unsichtbar geschaltet und in die ausgewählte Archivierungskategorie (Kursbereich) verschoben wird.
+Alle Nutzer/innen mit der Rolle „student“ (Teilnehmer/in) werden aus dem Kurs ausgetragen.
 Alle Kurse, die in den ausgewählten Kategorien liegen, werden gegen den eingestellten Zeitstempel geprüft.
-Je nach Einstellung des Zeitstempels gibt es dabei folgenden Ablauf.<br />
+Je nach Einstellung des Zeitstempels gibt es dabei folgenden Ablauf für die Archivierung und Löschung.<br />
 <br />
 Kursbeginn:<br />
-Liegt der Kursbeginn zwischen dem aktuellen Datum und der ausgwählten Anzahl an Tagen in der Vergangenheit, wird der Kurs archiviert.
-Im zweiten Schritt werden alle Kurs in der Archivierungskategorie geprüft. Wenn der Kursbeginn weiter zurückliegt
-als die ausgewählte Anzahl an Tagen in der Vergangenheit, wird der Kurs gelöscht.<br />
+Liegt der Kursbeginn zeitlich zwischen der Anzahl an Tagen in der Vergangenheit und dem aktuellen Datum,
+wird der Kurs archiviert. Im zweiten Schritt werden alle Kurse in der Archivierungskategorie geprüft.
+Wenn der Kursbeginn weiter zurückliegt als die ausgewählte Anzahl an Tagen in der Vergangenheit, wird der Kurs gelöscht.<br />
 <br />
 Letzte Kursaktivität:<br />
-War die letzte Kurs Aktivität länger her als die Eingestellte Anzahl an tage wird der Kurs archiviert.
-Im zweiten Schritt werden die Kurse in der Archivierungskatagorie geprüft.
-Diesmal wird geprüft ob die letzte Aktivität länger zurückliegt als das Doppelte der konfigurierten Tage.
-Wenn das der Fall ist wird der Kurs endgültig gelöscht.<br />
+War die letzte Kursaktivität länger her als die eingestellte Anzahl an Tagen, wird der Kurs archiviert.
+Im zweiten Schritt werden die Kurse in der Archivierungskategorie geprüft. Diesmal wird verglichen,
+ob die letzte Aktivität länger zurückliegt als das doppelte der ausgewählten Anzahl an Tagen.
+Wenn das der Fall ist, wird der Kurs endgültig gelöscht.<br />
 <br />
-Angestoßen wird der Prozess mit einem Formular das im Block verlinkt ist. Der Block kann nur auf der Startseite eingbunden werden.';
+Angestoßen wird der Prozess der Archivierung über den Block Kursarchivierung auf der Startseite. Der Link „Archivierung starten“ öffnet eine Seite, die zum einen die Anzahl der zu archivierenden Kurse anzeigt, zum anderen die zu löschenden Kurse auflistet. Über die Schaltfläche „Archivierung starten“ werden die beiden Prozesse ausgelöst.
+Alternativ können Sie den Prozess automatisieren über einen Cronjob.';
 $string['confirm_archiving'] = 'Die folgenden Kurse werden archiviert:<br />
 <br />
 {$a->archived}<br />
@@ -54,7 +55,7 @@ Die folgenden Kurse werden gelöscht:<br />
 $string['confirm_header'] = 'Archivierung Bestätigen';
 $string['course_archiving_task'] = 'Kurse Archivieren';
 
-$string['days'] = 'Anzahl der Tage die rückwirkend betrachtet werden.';
+$string['days'] = 'Anzahl der Tage, die rückwirkend betrachtet werden.';
 
 $string['eledia_course_archiving:addinstance'] = 'Kurs-Archivierungs-Block hinzufügen';
 $string['eledia_course_archiving:use'] = 'Kurs-Archivierungs-Block verwenden';
@@ -71,12 +72,12 @@ Die folgenden Kurse wurden gelöscht:<br />
 
 $string['remove_success'] = ' - Erfolgreich gelöscht';
 $string['remove_error'] = ' - Fehler beim löschen.';
-$string['run_cron'] = 'cron zur Archivierung aktivieren';
+$string['run_cron'] = 'Cron zur Archivierung aktivieren';
 
-$string['sourcecat'] = 'Zu archivierde Kategorien';
+$string['sourcecat'] = 'Zu archivierende Kategorien';
 
 $string['targetcat'] = 'Archivkategorie';
-$string['targettimestamp'] = 'zu prüfender Zeitstempel';
+$string['targettimestamp'] = 'Zu prüfender Zeitstempel';
 $string['title'] = 'Kurs-Archivierung';
 
-$string['pluginname'] = 'Kurs-Archivierung';
+$string['pluginname'] = 'Kurs-Archivierung und Löschung';

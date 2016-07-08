@@ -26,14 +26,14 @@
 
 $string['archive'] = 'Start Archiving';
 
-$string['configure_description'] = 'Here you can configure the archiving process.
-Archiving means the course will be set invisible, moved to the confiruged archive category and all student users will be unenroled.
+$string['configure_description'] = 'Here you can configure the archiving process. Archiving means the course will be set invisible,
+moved to the confiruged archive category and all student users will be unenroled.
 All courses which are located directly in the source categories will be checked against the choosen timestamp.
 Depending on the timestamp setting there will be the follwoing flow.<br />
 
 Course start date:<br />
-If the date is within the timespan of now and the choosen days in the past, the course will be archived.
-In a second step all courses in archive categorie are checked.
+If the date is within the timespan of now and the choosen days in the past,
+the course will be archived. In a second step all courses in archive categorie are checked.
 If it is more than the chosen number of days in the past the course will be deleted.<br />
 <br />
 Last course activity:<br />
@@ -41,7 +41,8 @@ If the date is more than the choosne days in the past , the courses will be arch
 In a second step all courses in archive categorie are checked.
 If the courses there are inactive for more than the double number of days in the setting the coruses will be finally deleted.<br />
 <br />
-The process can be initiated through a form which is linked in the block. The block can be added to the main page only.';
+The process can be initiated through a form which is linked in the block. The block can be added to the main page only.
+As alternative you can set the process to run as a cron job.';
 $string['confirm_archiving'] = 'The follwoing courses will be archived:<br />
 <br />
 {$a->archived}<br />
