@@ -85,7 +85,17 @@ class block_eledia_course_archiving {
         $now = time();
 
         // Get courses to archive.
-        $categories = explode(',', $config->sourcecat);
+        if ($config->include_subcategories) {
+            $top_categories = explode(',', $config->sourcecat);
+            $categories = array();
+            foreach ($top_categories as $category) {
+                $categories[$category] = $category;
+            }
+            $categories = $this->get_all_subcategories($categories);
+        } else {
+            $categories = explode(',', $config->sourcecat);
+        }
+
         if ($config->targettimestamp == 'startdate') {
             $courses = $this->get_courses_by_startdate($categories, $since, $now);
         } else if ($config->targettimestamp == 'last_activity') {
@@ -140,4 +150,36 @@ class block_eledia_course_archiving {
         $sql = 'SELECT * FROM {course} WHERE category '.$qrypart.' AND startdate > ? AND startdate < ?';
         return $DB->get_records_sql($sql, $params);
     }
+
+    private function get_all_subcategories($categories) {
+        global $CFG;
+        require_once($CFG->dirroot.'/lib/coursecatlib.php');
+        $return = array();
+        foreach ($categories as $categoryid) {
+            $return[$categoryid] = $categoryid;
+            $childs = coursecat::get($categoryid)->get_children();
+            foreach ($childs as $child) {
+                // Add childs.
+                $return[$child->id] = $child->id;
+                // Check for childs child.
+                $sub_childs = $this->get_child_categories($child->id);
+                $return = $return + $sub_childs;
+            }
+        }
+        return $return;
+    }
+
+    private function get_child_categories($categoryid) {
+        $return = array();
+        $childs = coursecat::get($categoryid)->get_children();
+        foreach ($childs as $child) {
+            // Add childs.
+            $return[$child->id] = $child->id;
+            // Check for childs child.
+            $sub_childs = $this->get_child_categories($child->id);
+            $return = $return + $sub_childs;
+        }
+        return $return;
+    }
+
 }

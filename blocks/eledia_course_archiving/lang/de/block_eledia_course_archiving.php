@@ -60,6 +60,8 @@ $string['days'] = 'Anzahl der Tage, die rückwirkend betrachtet werden.';
 $string['eledia_course_archiving:addinstance'] = 'Kurs-Archivierungs-Block hinzufügen';
 $string['eledia_course_archiving:use'] = 'Kurs-Archivierungs-Block verwenden';
 
+$string['include_subcategories'] = 'Alle Unterbereiche einbeziehen';
+
 $string['last_activity'] = 'letzte Kursaktivität';
 
 $string['notice'] = 'Die folgenden Kurse wurden archiviert:<br />

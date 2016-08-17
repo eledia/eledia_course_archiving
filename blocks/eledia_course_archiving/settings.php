@@ -51,6 +51,12 @@ if ($ADMIN->fulltree) {
     $configs[] = new admin_setting_configmultiselect('sourcecat', get_string('sourcecat', 'block_eledia_course_archiving'),
             '', null, $options);
     $options = array(get_string('choose')) + $options;
+
+    $configs[] = new admin_setting_configcheckbox('include_subcategories',
+                                                get_string('include_subcategories', 'block_eledia_course_archiving'),
+                                                '',
+                                                0);
+
     $configs[] = new admin_setting_configselect('targetcat', get_string('targetcat', 'block_eledia_course_archiving'),
             '', null, $options);
     $configs[] = new admin_setting_configtext('days', get_string('days', 'block_eledia_course_archiving'),

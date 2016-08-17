@@ -58,6 +58,8 @@ $string['days'] = 'Number of days to archive';
 $string['eledia_course_archiving:addinstance'] = 'add course archiving block';
 $string['eledia_course_archiving:use'] = 'use course archiving block';
 
+$string['include_subcategories'] = 'Include all subcategories';
+
 $string['last_activity'] = 'last course activity';
 
 $string['notice'] = 'The follwoing courses were archived:<br />
