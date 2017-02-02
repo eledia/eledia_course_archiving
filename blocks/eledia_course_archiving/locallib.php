@@ -26,7 +26,8 @@
 class block_eledia_course_archiving {
 
     public function process_archivment($config) {
-        global $DB;
+        global $CFG, $DB;
+        require_once($CFG->dirroot.'/course/lib.php');
 
         // Get courses.
         $result = $this->check_courses($config);
