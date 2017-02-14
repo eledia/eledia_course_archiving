@@ -69,6 +69,7 @@ $string['notice'] = 'The follwoing courses were archived:<br />
 The follwoing courses where deleted:<br />
 <br />
 {$a->deleted}';
+$string['nothing_to_archive'] = 'no courses to archive or to delete';
 
 $string['remove_success'] = ' - Successful removed';
 $string['remove_error'] = ' - Errors while removing';

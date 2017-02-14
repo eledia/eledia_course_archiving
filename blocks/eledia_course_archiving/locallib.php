@@ -111,8 +111,8 @@ class block_eledia_course_archiving {
         } else if ($config->targettimestamp == 'last_activity') {
             $since2 = $since - ($config->days * 24 * 60 * 60);
             $old_params = array($config->targetcat, $since2);
-            $sql = 'SELECT * FROM mdl_course c,(SELECT courseid, max(timecreated) AS timecreated
-                FROM `mdl_logstore_standard_log`
+            $sql = 'SELECT * FROM {course} c,(SELECT courseid, max(timecreated) AS timecreated
+                FROM `{logstore_standard_log}`
                 WHERE action = \'viewed\'
                 GROUP BY courseid) AS log
                 WHERE category = ?
@@ -132,8 +132,8 @@ class block_eledia_course_archiving {
 
         list($qrypart, $params) = $DB->get_in_or_equal($categories);
         $params[] = $since;
-        $sql = 'SELECT * FROM mdl_course c,(SELECT courseid, max(timecreated) AS timecreated
-                FROM `mdl_logstore_standard_log`
+        $sql = 'SELECT * FROM {course} c,(SELECT courseid, max(timecreated) AS timecreated
+                FROM `{logstore_standard_log}`
                 WHERE action = \'viewed\'
                 GROUP BY courseid) AS log
                 WHERE category '.$qrypart.'

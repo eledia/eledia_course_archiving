@@ -71,6 +71,7 @@ $string['notice'] = 'Die folgenden Kurse wurden archiviert:<br />
 Die folgenden Kurse wurden gelöscht:<br />
 <br />
 {$a->deleted}';
+$string['nothing_to_archive'] = 'Keine Kurse zu archivieren oder zu löschen';
 
 $string['remove_success'] = ' - Erfolgreich gelöscht';
 $string['remove_error'] = ' - Fehler beim löschen.';

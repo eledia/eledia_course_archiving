@@ -60,7 +60,11 @@ class archiving_courses_form extends moodleform {
         }
 
         $mform->addElement('header', '', get_string('confirm_header', 'block_eledia_course_archiving'));
-        $mform->addElement('static', '' , '', get_string('confirm_archiving', 'block_eledia_course_archiving', $a));
+        if (empty($result->archive) && empty($result->delete)) {
+            $mform->addElement('static', '' , '', get_string('nothing_to_archive', 'block_eledia_course_archiving'));
+        } else {
+            $mform->addElement('static', '' , '', get_string('confirm_archiving', 'block_eledia_course_archiving', $a));
+        }
 
         $mform->addElement('submit', 'submitbutton', get_string('archive', 'block_eledia_course_archiving'));
         $mform->addElement('cancel', 'cancelbutton');
