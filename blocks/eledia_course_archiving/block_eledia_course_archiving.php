@@ -28,7 +28,6 @@ class block_eledia_course_archiving extends block_base {
 
     public function init() {
         $this->title   = get_string('title', 'block_eledia_course_archiving');
-        $this->version = 2013091300;// Format yyyymmddvv.
     }
 
     public function applicable_formats() {
@@ -54,7 +53,6 @@ class block_eledia_course_archiving extends block_base {
         }
 
         if (has_capability('block/eledia_course_archiving:use', CONTEXT_BLOCK::instance($this->instance->id))) {
-
             $this->content->text .= '<a href="'.$CFG->wwwroot.'/blocks/eledia_course_archiving/archiving_courses.php" >';
             $this->content->text .= get_string('archive', 'block_eledia_course_archiving');
             $this->content->text .= '</a>';

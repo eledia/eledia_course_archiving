@@ -29,7 +29,7 @@ if (!defined('MOODLE_INTERNAL')) {
 }
 
 require_once($CFG->libdir.'/formslib.php');
-require_once($CFG->dirroot.'/blocks/eledia_course_archiving/locallib.php');
+//require_once($CFG->dirroot.'/blocks/eledia_course_archiving/locallib.php');
 
 class archiving_courses_form extends moodleform {
 
@@ -37,7 +37,7 @@ class archiving_courses_form extends moodleform {
         $mform =& $this->_form;
 
         $config = get_config('block_eledia_course_archiving');
-        $archivement = new \block_eledia_course_archiving();
+        $archivement = new block_eledia_course_archiving\course_archiving_helper();
         $result = $archivement->check_courses($config);
 
         $a = new stdClass();
