@@ -28,15 +28,13 @@ require_once('../../config.php');
 require_once('../../course/lib.php');
 global $DB, $CFG;
 
-$PAGE->set_url('/blocks/eledia_course_archiving/archiving_courses.php');
-$context = CONTEXT_SYSTEM::instance();
-$PAGE->set_context($context);
-$PAGE->set_pagelayout('course');
-
+$context = context_system::instance();
 require_login(0, false);
 require_capability('moodle/site:config', $context);
 
-$config = get_config('block_eledia_course_archiving');
+$PAGE->set_url('/blocks/eledia_course_archiving/archiving_courses.php');
+$PAGE->set_context($context);
+$PAGE->set_pagelayout('course');
 
 require_once('archiving_courses_form.php');
 $mform = new archiving_courses_form();
@@ -45,8 +43,9 @@ $mform = new archiving_courses_form();
 if ($mform->is_cancelled()) {
     redirect($CFG->wwwroot);
 } else if ($genparams = $mform->get_data() && $mform->is_submitted()) {
-    include_once('locallib.php');
-    $archivement = new block_eledia_course_archiving();
+//    include_once('locallib.php');
+    $config = get_config('block_eledia_course_archiving');
+    $archivement = new block_eledia_course_archiving\course_archiving_helper();
     $a = $archivement->process_archivment($config);
     notice(get_string('notice', 'block_eledia_course_archiving', $a), $CFG->wwwroot);
 }
