@@ -31,7 +31,7 @@ class course_archiving_helper {
     public function process_archivment($config) {
         global $CFG, $DB;
         require_once($CFG->dirroot.'/course/lib.php');
-        
+
         // Get courses.
         $result = $this->check_courses($config);
 
@@ -157,11 +157,11 @@ class course_archiving_helper {
 
     private function get_all_subcategories($categories) {
         global $CFG;
-        require_once($CFG->dirroot.'/lib/coursecatlib.php');
+
         $return = array();
         foreach ($categories as $categoryid) {
             $return[$categoryid] = $categoryid;
-            $childs = \coursecat::get($categoryid)->get_children();
+            $childs = \core_course_category::get($categoryid)->get_children();
             foreach ($childs as $child) {
                 // Add childs.
                 $return[$child->id] = $child->id;
@@ -175,7 +175,7 @@ class course_archiving_helper {
 
     private function get_child_categories($categoryid) {
         $return = array();
-        $childs = \coursecat::get($categoryid)->get_children();
+        $childs = \core_course_category::get($categoryid)->get_children();
         foreach ($childs as $child) {
             // Add childs.
             $return[$child->id] = $child->id;
