@@ -51,7 +51,8 @@ class course_archiving_helper {
                 $instances = $DB->get_records('enrol', array('courseid' => $course->id));
                 if (!empty ($instances)) {
                     foreach ($instances as $instance) {
-                        $user_enrolment = $DB->get_record('user_enrolments', array('enrolid' => $instance->id, 'userid' => $user->id));
+                        $user_enrolment = $DB->get_record('user_enrolments',
+                            array('enrolid' => $instance->id, 'userid' => $user->id));
                         if (!empty ($user_enrolment)) {
                             $plugin = enrol_get_plugin($instance->enrol);
                             $plugin->unenrol_user($instance, $user->id);
@@ -115,7 +116,7 @@ class course_archiving_helper {
             $since2 = $since - ($config->days * 24 * 60 * 60);
             $old_params = array($config->targetcat, $since2);
             $sql = 'SELECT * FROM {course} c,(SELECT courseid, max(timecreated) AS timecreated
-                FROM `{logstore_standard_log}`
+                FROM {logstore_standard_log}
                 WHERE action = \'viewed\'
                 GROUP BY courseid) AS log
                 WHERE category = ?
@@ -136,7 +137,7 @@ class course_archiving_helper {
         list($qrypart, $params) = $DB->get_in_or_equal($categories);
         $params[] = $since;
         $sql = 'SELECT * FROM {course} c,(SELECT courseid, max(timecreated) AS timecreated
-                FROM `{logstore_standard_log}`
+                FROM {logstore_standard_log}
                 WHERE action = \'viewed\'
                 GROUP BY courseid) AS log
                 WHERE category '.$qrypart.'

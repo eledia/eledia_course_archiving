@@ -45,7 +45,6 @@ class eledia_course_archiving_task extends \core\task\scheduled_task {
         global $CFG;
         $config = get_config('block_eledia_course_archiving');
         if ($config->run_cron) {
-//            include_once($CFG->dirroot.'/blocks/eledia_course_archiving/locallib.php');
             $archivement = new \block_eledia_course_archiving\course_archiving_helper();
             $a = $archivement->process_archivment($config);
             mtrace(strip_tags(get_string('notice', 'block_eledia_course_archiving', $a)));

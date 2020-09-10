@@ -43,7 +43,6 @@ $mform = new archiving_courses_form();
 if ($mform->is_cancelled()) {
     redirect($CFG->wwwroot);
 } else if ($genparams = $mform->get_data() && $mform->is_submitted()) {
-//    include_once('locallib.php');
     $config = get_config('block_eledia_course_archiving');
     $archivement = new block_eledia_course_archiving\course_archiving_helper();
     $a = $archivement->process_archivment($config);

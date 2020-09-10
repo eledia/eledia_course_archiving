@@ -9,8 +9,9 @@ To install the plugin just copy the folder "eledia_course_archiving" into moodle
 Afterwards you have to go to http://your-moodle/admin (Site administration -> Notifications) to trigger the installation process.
 
 Usage:
-Configure the block within the plugins block configuration. Description of the process and the config fields can be found on the config page itself.
-To start the process add the block to the main page. In the block you can find the link to form which starts the process.
+Configure the block within the plugins block configuration. Description of the process and the config fields can be found on the
+config page itself.To start the process add the block to the main page. In the block you can find the link to form which starts
+the process.
 
 copyright  2013 eLeDia GmbH http://eledia.de
 license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
