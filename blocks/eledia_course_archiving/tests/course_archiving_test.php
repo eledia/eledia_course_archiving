@@ -26,7 +26,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-class local_eledia_course_archiving_testcase extends advanced_testcase {
+class block_eledia_course_archiving_testcase extends advanced_testcase {
     public function test_generator() {
         global $DB;
 
@@ -113,7 +113,7 @@ class local_eledia_course_archiving_testcase extends advanced_testcase {
         set_config('buffersize', 0, 'logstore_standard');
         get_log_manager(true);
 
-        // Fake course acticity.
+        // Fake course activity.
         $eventdata = array('context' => context_course::instance($course1->id));
         $event = \core\event\course_viewed::create($eventdata);
         $event->trigger();
